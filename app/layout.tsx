@@ -9,7 +9,7 @@ import { getCurrentUser } from '@/lib/auth'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Daily Trivia Challenge',
+  title: 'Baldy Trivia Challenge',
   description: 'Test your knowledge with a new trivia question every day!',
 }
 
