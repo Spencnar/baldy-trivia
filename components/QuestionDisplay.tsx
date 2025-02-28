@@ -63,7 +63,7 @@ export default function QuestionDisplay() {
 
   return (
     <div className="p-6 bg-white rounded-lg shadow-md">
-      <h2 className="text-xl font-bold mb-4">Today's Question:</h2>
+      <h2 className="text-xl font-bold mb-4">Today&apos;s Question:</h2>
       <p className="text-lg mb-4">{question.question}</p>
       
       {question.hint && (

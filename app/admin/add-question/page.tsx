@@ -8,8 +8,7 @@ export default function AddQuestion() {
   const router = useRouter();
 
   const handleSuccess = () => {
-    // Optionally navigate back to the admin dashboard
-    // router.push('/admin');
+     router.push('/admin');
   };
 
   return (

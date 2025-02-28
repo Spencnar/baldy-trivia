@@ -1,5 +1,4 @@
 import { getServerSession } from 'next-auth/next';
-import { NextRequestWithAuth } from 'next-auth/middleware';
 
 export async function getSession() {
   return await getServerSession();
