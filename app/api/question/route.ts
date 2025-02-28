@@ -37,6 +37,9 @@ export async function POST(request: NextRequest) {
   try {
     const currentUser = await getCurrentUser();
     
+    // Add debug logging
+    console.log('Current user:', currentUser);
+    
     // Verify admin access
     if (!currentUser?.isAdmin) {
       return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
