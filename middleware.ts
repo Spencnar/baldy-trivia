@@ -1,23 +1,15 @@
-import { NextRequestWithAuth, withAuth } from 'next-auth/middleware';
-import { NextResponse } from 'next/server';
+import { withAuth } from 'next-auth/middleware';
 
-export default withAuth(
-  function middleware(request: NextRequestWithAuth) {
-    // Check if user is authenticated and is an admin
-    if (
-      request.nextUrl.pathname.startsWith('/admin') &&
-      request.nextauth.token?.isAdmin !== true
-    ) {
-      return NextResponse.redirect(new URL('/', request.url));
-    }
+export default withAuth({
+  callbacks: {
+    authorized: ({ token }) => !!token,
   },
-  {
-    callbacks: {
-      authorized: ({ token }) => !!token,
-    },
-  }
-);
+});
 
 export const config = {
-  matcher: ['/admin/:path*'],
+  matcher: [
+    '/admin/:path*',
+    '/api/admin/:path*',
+    '/api/question/:path*'
+  ]
 };
