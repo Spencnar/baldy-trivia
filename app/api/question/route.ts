@@ -35,18 +35,25 @@ export async function GET() {
 // POST - Create a new question (admin only)
 export async function POST(request: NextRequest) {
   try {
+    console.log("POST /api/question - started");
     const currentUser = await getCurrentUser();
     
-    // Add debug logging
-    console.log('Current user:', currentUser);
+    // Add more detailed logging
+    console.log("Current user:", currentUser ? JSON.stringify({
+      id: currentUser.id,
+      email: currentUser.email,
+      isAdmin: currentUser.isAdmin
+    }) : "No user found");
     
     // Verify admin access
     if (!currentUser?.isAdmin) {
+      console.log("Unauthorized: User is not admin");
       return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
     }
 
     await dbConnect();
     const data = await request.json();
+    console.log("Request data:", JSON.stringify(data));
     
     // Validate required fields
     if (!data.question || !data.answer || !data.publishDate) {
