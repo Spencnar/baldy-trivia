@@ -1,36 +1,122 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Daily Trivia App
+
+A Next.js application that displays a daily trivia question where users can submit their answers. Built with Next.js, TypeScript, MongoDB, and Tailwind CSS.
+
+## Features
+
+- Daily trivia question display
+- User answer submission
+- Real-time display of recent submissions
+- Admin dashboard for managing questions
+- Authentication for admin users
+
+## Tech Stack
+
+- **Frontend**: Next.js 14, React, TypeScript
+- **Styling**: Tailwind CSS
+- **Database**: MongoDB with Mongoose
+- **Authentication**: NextAuth.js
+- **Deployment**: Vercel (recommended)
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Node.js 18.x or higher
+- MongoDB database (local or Atlas)
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/daily-trivia.git
+   cd daily-trivia
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Set up environment variables:
+   - Copy `.env.example` to `.env`
+   - Update the values with your MongoDB connection string and other settings
+
+   ```bash
+   cp .env.example .env
+   ```
+
+4. Run the development server:
+   ```bash
+   npm run dev
+   ```
+
+5. Seed the database with an admin user:
+   ```bash
+   npm run seed
+   ```
+
+### Project Structure
+
+```
+daily-trivia/
+├── app/                  # Next.js app router
+├── components/           # React components
+├── lib/                  # Utility functions
+├── models/               # MongoDB schemas
+├── public/               # Static assets
+├── scripts/              # Seeding scripts
+└── types/                # TypeScript type definitions
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Usage
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### User Interface
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Visit the homepage to see today's question and submit your answer
+- View recent submissions from other users
 
-## Learn More
+### Admin Interface
 
-To learn more about Next.js, take a look at the following resources:
+- Access the admin login at `/auth/signin`
+- Default credentials:
+  - Email: admin@example.com
+  - Password: adminpassword123
+  - (Change these in your .env file)
+- Manage questions through the admin dashboard
+- Add, edit, or delete questions
+- Schedule questions for future dates
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Vercel Deployment
 
-## Deploy on Vercel
+1. Push your code to a GitHub repository
+2. Connect your repository to Vercel
+3. Set up the environment variables in the Vercel dashboard
+4. Deploy!
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Custom Server Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+1. Build the application:
+   ```bash
+   npm run build
+   ```
+
+2. Start the production server:
+   ```bash
+   npm start
+   ```
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+MongoDB Login Info
+
+spencerhawhee
+1Gbo8UpoA72wgw8j
