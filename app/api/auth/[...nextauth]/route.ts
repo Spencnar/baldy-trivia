@@ -20,12 +20,15 @@ const handler = NextAuth({
 
         await dbConnect();
         const user = await User.findOne({ email: credentials.email });
+        console.log('Auth attempt for user:', credentials.email);
 
         if (!user) {
+          console.log('User not found');
           return null;
         }
 
         const isPasswordValid = await bcrypt.compare(credentials.password, user.password);
+        console.log('Password valid:', isPasswordValid);
 
         if (!isPasswordValid) {
           return null;
@@ -46,6 +49,7 @@ const handler = NextAuth({
         token.id = user.id;
         token.isAdmin = user.isAdmin;
       }
+      console.log('JWT callback token:', token);
       return token;
     },
     async session({ session, token }) {
@@ -53,6 +57,7 @@ const handler = NextAuth({
         session.user.id = token.id;
         session.user.isAdmin = token.isAdmin;
       }
+      console.log('Session callback:', session);
       return session;
     },
   },
@@ -61,8 +66,10 @@ const handler = NextAuth({
   },
   session: {
     strategy: 'jwt',
+    maxAge: 30 * 24 * 60 * 60, // 30 days
   },
   secret: process.env.NEXTAUTH_SECRET,
+  debug: true,
   cookies: {
     sessionToken: {
       name: `__Secure-next-auth.session-token`,
